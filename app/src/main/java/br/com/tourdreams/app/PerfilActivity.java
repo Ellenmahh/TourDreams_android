@@ -12,13 +12,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.bloder.magic.view.MagicButton;
 import br.com.tourdreams.app.cmlibrary.CircleMenu;
 import br.com.tourdreams.app.cmlibrary.OnMenuSelectedListener;
 
 public class PerfilActivity extends BaseActivity {
     Context context;
-    MagicButton chat_usuario;
     TextView adquirir, oqMtf;
     EditText edit_avaliacao;
     RatingBar avalacao_estrelas;
@@ -37,16 +35,7 @@ public class PerfilActivity extends BaseActivity {
         avalacao_estrelas = (RatingBar) findViewById(R.id.avalacao_estrelas);
         avaliar = (Button) findViewById(R.id.avaliar);
 
-        chat_usuario = (MagicButton) findViewById(R.id.chat_usuario);
-        chat_usuario.setMagicButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,"conversa",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent (context,Chat.class));
-            }
-        });
-
-       CircleMenu circleMenu = (CircleMenu) findViewById(R.id.cicle_menu);
+        CircleMenu circleMenu = (CircleMenu) findViewById(R.id.cicle_menu);
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.ic_add_black_24dp,R.drawable.ic_remove_black_24dp);
         circleMenu.addSubMenu(Color.parseColor("#258CFF"),R.drawable.ic_mode_edit_black_24dp)
                 .addSubMenu(Color.parseColor("#cd4c41"),R.drawable.ic_reorder_black_24dp)
@@ -83,7 +72,6 @@ public class PerfilActivity extends BaseActivity {
         Toast.makeText(this,"mtf",Toast.LENGTH_SHORT).show();
         CustomBottomSheetDialog dialog = new CustomBottomSheetDialog(this);
         dialog.lst_sheet.add("Milhas trevel Fidelidade");
-
         dialog.show();
     }
 

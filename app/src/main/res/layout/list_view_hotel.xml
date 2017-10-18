@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:layout_width="match_parent"
@@ -37,7 +37,6 @@
                 android:layout_gravity="center"
                 android:text=" HOTEL tal "
                 android:textColor="@color/colorPrimary" android:layout_marginTop="5dp"/>
-
             <TextView
                 android:id="@+id/txt_preco_hotel"
                 android:layout_width="wrap_content"
@@ -47,12 +46,26 @@
                 android:textColor="@color/colorPrimary" android:layout_marginTop="5dp" />
 
         </LinearLayout>
-
-
         <ImageView
             android:layout_width="300dp"
             android:layout_gravity="center"
             android:layout_height="30dp"
             android:src="@drawable/estrelas"/>
-    </LinearLayout>
+
+        <br.com.bloder.magic.view.MagicButton
+            android:id="@+id/chat_usuario"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            app:magic_button_size="50dp"
+            app:button_icon="@drawable/ic_message_black_24dp"
+            app:button_icon_width="25dp"
+            app:button_icon_height="25dp"
+            app:hide_text="Chat"
+            app:hide_text_size="5dp"
+            app:hide_text_color="#000"
+            app:icon_button_color="@android:color/darker_gray"
+            app:expandable_area_color="@color/colorPrimaryDark"
+            />
+</LinearLayout>
 

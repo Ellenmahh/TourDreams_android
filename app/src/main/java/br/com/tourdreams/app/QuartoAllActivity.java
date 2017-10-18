@@ -1,0 +1,45 @@
+package br.com.tourdreams.app;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class QuartoAllActivity extends BaseActivity {
+    GridView gridView;
+    Context context;
+    List<DadosQuarto> lst_quarto = new ArrayList<>();
+    QuartoAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        definirConteudo(R.layout.activity_quarto_all);
+        context = this;
+
+        gridView = (GridView) findViewById(R.id.gridView);
+        lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
+        lst_quarto.add(new DadosQuarto("quartohaha",299.99,"asd",R.drawable.hotel));
+        lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
+        lst_quarto.add(new DadosQuarto("quatal",199.90,"asd",R.drawable.hotel));
+
+        adapter = new QuartoAdapter(context,R.layout.activity_quarto_all,lst_quarto);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(context,"Quarto "+i,Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(context, QuartosActivity.class));
+            }
+        });
+
+
+
+    }
+}
