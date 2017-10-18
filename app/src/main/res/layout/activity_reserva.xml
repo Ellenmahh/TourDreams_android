@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+ >
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        >
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/bannerpromocao"
+                android:layout_marginTop="50dp"
+                android:id="@+id/slide_quartos"
+                >
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sliderDots"
+                android:orientation="horizontal"
+                android:layout_below="@+id/slide_quartos"
+                android:layout_gravity="center">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_nome_reserva"
+                    android:textColor="@color/colorPrimary" android:text="Quarto:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_preco_reserva"
+                    android:textColor="@color/colorPrimary" android:text="R$"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_nome_do_hotel"
+                    android:gravity="center"
+                     />
+
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/lst_caract"
+                        android:text="Hotelxx"
+                        android:layout_marginBottom="20dp"
+                        android:divider="@android:color/holo_blue_dark">
+                    </ListView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/linearData"
+                    >
+                    <TextView
+                        android:id="@+id/data"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Check In "
+                        android:padding="10dp"
+                        android:background="@drawable/borda"
+                        android:textSize="18sp"
+                        android:onClick="checkIn" />
+
+                    <TextView
+                        android:id="@+id/data2"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Check Out"
+                        android:padding="10dp"
+                        android:background="@drawable/borda"
+                        android:textSize="18sp"
+                        android:onClick="checkOut"/>
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_customizado"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="finalizar reservar"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+</LinearLayout>

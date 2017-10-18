@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_vertical_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="br.com.tourdreams.app.PerfilActivity"
+    android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome do usuário"
+                android:layout_marginTop="70dp"
+                android:id="@+id/txt_nome_usuario"
+                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="23dp">
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/account"
+                        android:id="@+id/img_usuario"
+                        />
+                   <br.com.tourdreams.app.cmlibrary.CircleMenu
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="end"
+                        android:id="@+id/cicle_menu"
+                       />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/btn_customizado"
+                    android:layout_marginBottom="20dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="MILHAS TREVEL FIDELIDADE"
+                        android:gravity="center"
+
+                        android:layout_marginTop="20dp"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                           android:src="@android:drawable/ic_secure"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="pontos"/>
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="oq é MTF?"
+                            android:onClick="oqMtf"
+                            android:id="@+id/oqMtf"/>
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Como adquirir?"
+                            android:onClick="adquirir"
+                            android:id="@+id/adquirir"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textAlignment="center"
+                        android:textSize="15dp"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <Toolbar
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Reserva aprovada"
+                            android:textSize="10dp"
+                            android:textAlignment="center"
+                            />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_check_circle_white_24dp"
+                            android:backgroundTint="@color/botaoSalvar"/>
+                    </LinearLayout>
+                    </Toolbar>
+
+                    <Toolbar
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Curtindo a viagem"
+                            android:textAlignment="center"
+                            android:textSize="10dp"
+                            />
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_sentiment_very_satisfied_black_24dp"
+                                />
+                        </LinearLayout>
+                    </Toolbar>
+
+                        <Toolbar
+                            android:layout_width="fill_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Aguardando avaliação"
+                                    android:textSize="10dp"
+                                    android:textAlignment="center"
+                                    />
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/ic_sms_black_24dp"
+                                    android:onClick="avaliacao"
+                                    />
+                            </LinearLayout>
+                        </Toolbar>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <br.com.bloder.magic.view.MagicButton
+                    android:id="@+id/chat_usuario"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="end"
+                    app:magic_button_size="50dp"
+                    app:button_icon="@drawable/ic_message_black_24dp"
+                    app:button_icon_width="25dp"
+                    app:button_icon_height="25dp"
+                    app:hide_text="Chat"
+                    app:hide_text_size="5dp"
+                    app:hide_text_color="#000"
+                    app:icon_button_color="@android:color/darker_gray"
+                    app:expandable_area_color="@color/colorPrimaryDark"
+                />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_avaliacao"
+                        android:hint="Insira um comentário"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        />
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/avalacao_estrelas"
+                        android:visibility="gone"
+                        />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="avaliar"
+                        android:id="@+id/avaliar"
+                        android:onClick="avaliar"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+</RelativeLayout>
