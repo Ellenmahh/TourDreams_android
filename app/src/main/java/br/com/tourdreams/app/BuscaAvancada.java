@@ -6,13 +6,15 @@ package br.com.tourdreams.app;
 
 public class BuscaAvancada {
 
+    private String descricao;
     private int imagem;
 
-    public BuscaAvancada(int imagem){
 
-        this.setImagem(imagem);
+    public BuscaAvancada(int imagem,String descricao){
+
+        this.imagem = imagem;
+        this.descricao = descricao;
     }
-
 
     public int getImagem() {
         return imagem;
@@ -20,5 +22,13 @@ public class BuscaAvancada {
 
     public void setImagem(int imagem) {
         this.imagem = imagem;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

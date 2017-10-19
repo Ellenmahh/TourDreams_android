@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +52,7 @@ public class PerfilActivity extends BaseActivity {
         linear_status = (LinearLayout) findViewById(R.id.linear_status);
         linear_img = (LinearLayout) findViewById(R.id.linear_img);
 
-        linear_msg.setVisibility(View.INVISIBLE);
+        linear_msg.setVisibility(View.GONE);
         list_msg = (ListView) findViewById(R.id.list_msg);
 
         floatingButton();

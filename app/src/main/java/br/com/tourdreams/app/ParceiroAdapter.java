@@ -38,6 +38,7 @@ public class ParceiroAdapter extends ArrayAdapter<Parceiro>{
             TextView preco_modelo = (TextView) v.findViewById(R.id.preco_modelo);
             txt_modelo.setText(item.getNome());
             preco_modelo.setText(item.getDonoDoHotel());
+
             Picasso.with(getContext())
                     .load(item.getImagem()) // pega a imagem e carrega ela na image view
                     .transform(new CircleTransform()) // classe do android para deixar a imagem redonda

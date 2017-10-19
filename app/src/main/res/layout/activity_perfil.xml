@@ -12,8 +12,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+            android:layout_height="wrap_content"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                     android:id="@+id/linear_img">
                     <ImageView
                         android:layout_width="180dp"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:background="@drawable/carinha"
                         android:id="@+id/img_usuario"
                         />
@@ -95,63 +95,70 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
+                    android:id="@+id/linear_principal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/linear_principal">
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="fill_parent"
-                        android:layout_weight="1"
                         android:layout_height="120dp"
-                        android:orientation="vertical"
                         android:layout_marginTop="10dp"
-                        >
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
                             android:text="Status"
                             android:textAlignment="center"
-                            android:textSize="15dp"
-                            android:layout_marginBottom="15dp"
-                            />
+                            android:textSize="15dp" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
                             <Toolbar
                                 android:layout_width="fill_parent"
-                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical">
+
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="Reserva aprovada"
-                                        android:textAlignment="center"
-                                        />
+                                        android:textAlignment="center" />
+
                                     <ImageView
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_gravity="center"
                                         android:background="@drawable/ic_check_circle_white_24dp"
-                                        android:backgroundTint="@color/botaoSalvar"/>
+                                        android:backgroundTint="@color/botaoSalvar" />
                                 </LinearLayout>
                             </Toolbar>
 
                             <Toolbar
                                 android:layout_width="fill_parent"
-                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical">
+
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -159,102 +166,106 @@
                                         android:textAlignment="center"
 
                                         />
+
                                     <ImageView
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:background="@drawable/ic_sentiment_very_satisfied_black_24dp"
-                                        />
+                                        android:background="@drawable/ic_sentiment_very_satisfied_black_24dp" />
                                 </LinearLayout>
                             </Toolbar>
 
                             <Toolbar
                                 android:layout_width="fill_parent"
-                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical">
+
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="Aguardando avaliação"
-                                        android:textAlignment="center"
-                                        />
+                                        android:textAlignment="center" />
+
                                     <ImageView
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_gravity="center"
                                         android:background="@drawable/ic_sms_black_24dp"
-                                        android:onClick="avaliacao"
-                                        />
+                                        android:onClick="avaliacao" />
                                 </LinearLayout>
                             </Toolbar>
 
                         </LinearLayout>
                     </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.github.clans.fab.FloatingActionMenu
-                        android:id="@+id/floating_menu"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                       android:layout_gravity="end"
-                        fab:menu_animationDelayPerItem="55"
-                        fab:menu_backgroundColor="@android:color/transparent"
-                        fab:menu_buttonSpacing="0dp"
-                        fab:menu_colorNormal="#da3c2f"
-                        fab:menu_colorPressed="#dc4b3f"
-                        fab:menu_colorRipple="#99d4d4d4"
-                        fab:menu_fab_label="Floating Social Icons"
-                        fab:menu_fab_size="normal"
-                        fab:menu_icon="@drawable/fab_add"
-                        fab:menu_labels_colorNormal="#333"
-                        fab:menu_labels_colorPressed="#444"
-                        fab:menu_labels_colorRipple="#66efecec"
-                        fab:menu_labels_cornerRadius="3dp"
-                        fab:menu_labels_ellipsize="none"
-                        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-                        fab:menu_labels_margin="0dp"
-                        fab:menu_labels_maxLines="-1"
-                        fab:menu_labels_padding="8dp"
-                        fab:menu_labels_position="left"
-                        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-                        fab:menu_labels_showShadow="true"
-                        fab:menu_labels_singleLine="false"
-                        fab:menu_labels_textColor="#f2f1f1"
-                        fab:menu_labels_textSize="15sp"
-                        fab:menu_openDirection="up"
-                        fab:menu_shadowColor="#66aff198"
-                        fab:menu_shadowRadius="4dp"
-                        fab:menu_shadowXOffset="1dp"
-                        fab:menu_shadowYOffset="4dp"
-                        fab:menu_showShadow="true">
 
-                        <com.github.clans.fab.FloatingActionButton
-                            android:id="@+id/msg_recente"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_message_black_24dp"
-                            app:fab_colorNormal="@android:color/holo_blue_light"
-                            app:fab_colorPressed="@android:color/holo_blue_dark"
-                            fab:fab_size="mini" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <com.github.clans.fab.FloatingActionButton
-                            android:id="@+id/msg_nova"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_add_black_24dp"
-                            app:fab_colorNormal="@android:color/holo_green_light"
-                            app:fab_colorPressed="@android:color/holo_green_dark"
-                            fab:fab_size="mini" />
+                        <com.github.clans.fab.FloatingActionMenu
+                            android:id="@+id/floating_menu"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="end"
+                            fab:menu_animationDelayPerItem="55"
+                            fab:menu_backgroundColor="@android:color/transparent"
+                            fab:menu_buttonSpacing="0dp"
+                            fab:menu_colorNormal="#da3c2f"
+                            fab:menu_colorPressed="#dc4b3f"
+                            fab:menu_colorRipple="#99d4d4d4"
+                            fab:menu_fab_label="Floating Social Icons"
+                            fab:menu_fab_size="normal"
+                            fab:menu_icon="@drawable/fab_add"
+                            fab:menu_labels_colorNormal="#333"
+                            fab:menu_labels_colorPressed="#444"
+                            fab:menu_labels_colorRipple="#66efecec"
+                            fab:menu_labels_cornerRadius="3dp"
+                            fab:menu_labels_ellipsize="none"
+                            fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+                            fab:menu_labels_margin="0dp"
+                            fab:menu_labels_maxLines="-1"
+                            fab:menu_labels_padding="8dp"
+                            fab:menu_labels_position="left"
+                            fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+                            fab:menu_labels_showShadow="true"
+                            fab:menu_labels_singleLine="false"
+                            fab:menu_labels_textColor="#f2f1f1"
+                            fab:menu_labels_textSize="15sp"
+                            fab:menu_openDirection="up"
+                            fab:menu_shadowColor="#66aff198"
+                            fab:menu_shadowRadius="4dp"
+                            fab:menu_shadowXOffset="1dp"
+                            fab:menu_shadowYOffset="4dp"
+                            fab:menu_showShadow="true">
 
-                    </com.github.clans.fab.FloatingActionMenu>
+                            <com.github.clans.fab.FloatingActionButton
+                                android:id="@+id/msg_recente"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_message_black_24dp"
+                                app:fab_colorNormal="@android:color/holo_blue_light"
+                                app:fab_colorPressed="@android:color/holo_blue_dark"
+                                fab:fab_size="mini" />
+
+                            <com.github.clans.fab.FloatingActionButton
+                                android:id="@+id/msg_nova"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_add_black_24dp"
+                                app:fab_colorNormal="@android:color/holo_green_light"
+                                app:fab_colorPressed="@android:color/holo_green_dark"
+                                fab:fab_size="mini" />
+
+                        </com.github.clans.fab.FloatingActionMenu>
+                    </LinearLayout>
                 </LinearLayout>
-                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

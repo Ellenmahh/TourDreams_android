@@ -4,20 +4,21 @@
     android:elevation="3dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rv_sheet_dialog"
-    android:paddingBottom="24dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
-    android:paddingTop="8dp"
-
-    >
+    android:id="@+id/rv_sheet_dialog">
 
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/gv_sheet"
-        android:numColumns="3"
-      >
+        android:background="@color/colorAccent"
+        android:numColumns="3">
     </GridView>
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+        android:layout_gravity="end|bottom"
+        android:text="Aplicar"
+        android:textSize="10dp"/>
 
 </FrameLayout>

@@ -1,13 +1,10 @@
 package br.com.tourdreams.app;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +18,7 @@ import java.util.List;
 
 public class BuscaAvancadaAdapter extends ArrayAdapter<BuscaAvancada> {
     int resource;
+    private LayoutInflater infla;
 
     public BuscaAvancadaAdapter(Context context, int resource, List<BuscaAvancada> objects) {
         //super(context, 0,lstCarateristicas);
@@ -36,16 +34,25 @@ public class BuscaAvancadaAdapter extends ArrayAdapter<BuscaAvancada> {
         if(v == null){
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            v = inflater.inflate(R.layout.bottom_sheet_dialog, null);
+            v = inflater.inflate(resource,null);
+        }
+        if(v == null ){
+            v = infla.inflate(R.layout.modelo_sheet, parent,false);
         }
 
         BuscaAvancada item = getItem(position);
 
         if(item != null){
-            GridView gv = (GridView) v.findViewById(R.id.gv_sheet);
-            gv.setNumColumns(3);
-            gv.setBackgroundResource(item.getImagem());
+            TextView txt_sheet = (TextView)v.findViewById(R.id.txt_sheet);
+            ImageView img_quarto_modelo = (ImageView) v.findViewById(R.id.img_quarto_modelo);
 
+            txt_sheet.setText(item.getDescricao());
+            //img_quarto_modelo.setImageResource(item.getImagem());
+
+            Picasso.with(getContext())
+                    .load(item.getImagem()) // pega a imagem e carrega ela na image view
+                    .transform(new CircleTransform()) // classe do android para deixar a imagem redonda
+                    .into(img_quarto_modelo); // a imgview q vai carregar a imagem
 
         }
         return v;

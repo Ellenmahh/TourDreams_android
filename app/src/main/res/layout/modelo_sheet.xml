@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+   >
+
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:background="@drawable/borda_sheet">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="servico de quarto"
+        android:layout_marginLeft="5dp"
+        android:textColor="@android:color/white"
+        android:textSize="10dp"
+        android:id="@+id/txt_sheet"/>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/img_quarto_modelo"
+
+
+        />
+</LinearLayout>
+
+
+</LinearLayout>
