@@ -48,12 +48,7 @@ public class CaracteristicasAdapter extends ArrayAdapter<Caracteristicas> {
                     .load(item.getImagem()) // pega a imagem e carrega ela na image view
                     .into(img_contem_caracteristica); // a imgview q vai carregar a imagem
 
-
         }
-
-
-
-
         return v;
     }
 }

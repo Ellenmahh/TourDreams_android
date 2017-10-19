@@ -40,8 +40,8 @@ public class ParceiroAdapter extends ArrayAdapter<Parceiro>{
             preco_modelo.setText(item.getDonoDoHotel());
             Picasso.with(getContext())
                     .load(item.getImagem()) // pega a imagem e carrega ela na image view
+                    .transform(new CircleTransform()) // classe do android para deixar a imagem redonda
                     .into(img_quarto_modelo); // a imgview q vai carregar a imagem
-
         }
 
         return v;

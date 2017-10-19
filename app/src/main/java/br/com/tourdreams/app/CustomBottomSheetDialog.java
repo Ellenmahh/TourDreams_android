@@ -22,8 +22,9 @@ import java.util.List;
  */
 
 public class CustomBottomSheetDialog extends BottomSheetDialog{
-    List<String> lst_sheet;
+    List<BuscaAvancada> lst_sheet;
     ListView lst_espandida;
+    BuscaAvancadaAdapter adapter;
     private Context context;
     public CustomBottomSheetDialog (Context context ){
         super(context);
@@ -35,13 +36,32 @@ public class CustomBottomSheetDialog extends BottomSheetDialog{
         View layout = getLayoutInflater().inflate(R.layout.bottom_sheet_dialog,null);
         setContentView(layout);
         GridView gv = (GridView) layout.findViewById(R.id.gv_sheet);
-       lst_sheet = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_expandable_list_item_1,lst_sheet);
-        lst_sheet.add("teste");
-        lst_sheet.add("teste");
-        lst_sheet.add("teste");
-        lst_sheet.add("teste");
-        lst_sheet.add("teste");
+        lst_sheet = new ArrayList<>();
+
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_spa_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_fitness_center_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+        lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp));
+         adapter = new BuscaAvancadaAdapter(context,R.layout.bottom_sheet_dialog,lst_sheet);
         gv.setAdapter(adapter);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -25,6 +25,7 @@ import java.util.TimerTask;
 
 import br.com.bloder.magic.view.MagicButton;
 
+
 public class MainActivity extends BaseActivity {
     TextView txt_nomee_hotel, txt_preco_hotel, txt_local_hotel;
     ImageView img_hotel, img_logo;
@@ -72,16 +73,15 @@ public class MainActivity extends BaseActivity {
         banner_promocao = (ViewPager) findViewById(R.id.banner_promocao);
         sliderDots = (LinearLayout) findViewById(R.id.sliderDots);
         lst_main = (ListView) findViewById(R.id.lst_main);
-
+/*
         chat_usuario = (MagicButton) findViewById(R.id.chat_usuario);
-
         chat_usuario.setMagicButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context,"conversa",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent (context,Chat.class));
             }
-        });
+        });*/
 
         LayoutInflater inflate = LayoutInflater.from(context);
         inflate.inflate(R.layout.small_bar,null);
