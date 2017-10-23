@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 email = txt_email.getText().toString();
                 senha = txt_senha.getText().toString();
                 new logar().execute();
-                startActivity(new Intent(context, MainActivity.class));
+
 
             }
         });
@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private class logar extends AsyncTask<Void,Void,Void> {
         String retorno;
         String server;
+        Integer idUsuario;
 
       /*  ProgressDialog progressDialog;
 
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            retorno = HttpConnection.get(LoginActivity.this.getString(R.string.endServidor)+ "logar.php?email="+email+"&senha="+senha);
+            retorno = HttpConnection.get(LoginActivity.this.getString(R.string.endServidor)+ "logar.php?email_usuario="+email+"&senha_usuario="+senha);
 
             return null;
         }
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             //Toast.makeText(context,retorno,Toast.LENGTH_LONG).show();
 
-          if(retorno.equals("erro")){
+          if(retorno.isEmpty()){
                 Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(context, "Usuário ou senha inválidos", Toast.LENGTH_SHORT).show();

@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -47,6 +45,7 @@ public class CadastrarUserActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 login = txt_nome_cadastro.getText().toString();
                 senha = txt_senha_cadastro.getText().toString();
                 telefone = txt_celular_cadastro.getText().toString();
@@ -54,7 +53,8 @@ public class CadastrarUserActivity extends AppCompatActivity {
                 email = txt_email_cadastro.getText().toString();
                 rg = txt_rg_cadastro.getText().toString();
                 cpf = txt_cpf_cadastro.getText().toString();
-               // new inserirNovoUser().execute();
+
+                new inserirNovoUser().execute();
 
                 // Snackbar.make(getCurrentFocus(),"Conta criada",Snackbar.LENGTH_INDEFINITE)
                  //       .setAction("Action", null).show();
@@ -90,7 +90,7 @@ public class CadastrarUserActivity extends AppCompatActivity {
         }
 
     }
-    /*private class inserirNovoUser extends AsyncTask<Void,Void,Void> {
+    private class inserirNovoUser extends AsyncTask<Void,Void,Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -104,13 +104,12 @@ public class CadastrarUserActivity extends AppCompatActivity {
                     +"&email_usuario=" + email;
             json = HttpConnection.get(server);
 
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(json.isEmpty()){
+            if(json != null){
                 Toast.makeText(context, "Cadastrado com sucesso",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(context,MainActivity.class));
             }else{
@@ -118,6 +117,6 @@ public class CadastrarUserActivity extends AppCompatActivity {
                 startActivity(new Intent(context, CadastrarUserActivity.class));
             }
         }
-    }*/
+    }
 }
 
