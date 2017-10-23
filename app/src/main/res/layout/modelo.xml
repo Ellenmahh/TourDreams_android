@@ -3,21 +3,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp">
+    android:layout_marginLeft="10dp">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="160dp"
-        android:id="@+id/img_quarto_modelo" />
+        android:layout_width="fill_parent"
+        android:layout_weight="0"
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/img_quarto_modelo"
+        android:src="@drawable/quarto"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:textAlignment="center"
         android:id="@+id/txt_modelo"
+        android:textColor="@color/colorPrimary"
         android:text="asdasd"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/preco_modelo"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
         android:text="R$"/>
 </LinearLayout>

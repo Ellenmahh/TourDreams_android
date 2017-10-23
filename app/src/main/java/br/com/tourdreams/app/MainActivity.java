@@ -27,7 +27,7 @@ import br.com.bloder.magic.view.MagicButton;
 
 
 public class MainActivity extends BaseActivity {
-    TextView txt_nomee_hotel, txt_preco_hotel, txt_local_hotel;
+
     ImageView img_hotel, img_logo;
     Context context;
     MagicButton chat_usuario;
@@ -36,8 +36,9 @@ public class MainActivity extends BaseActivity {
     private int dotscount;
     private ImageView[] dots;
     ListView lst_main;
-    List<Hotel> lstHotel = new ArrayList<>();
-    HotelAdapter adapter;
+    List<base> lstHotel = new ArrayList<>();
+    baseAdapter adapter;
+
 
     SearchView.OnQueryTextListener listennerBusca = new SearchView.OnQueryTextListener() {
 
@@ -65,9 +66,7 @@ public class MainActivity extends BaseActivity {
         definirConteudo(R.layout.content_main);
         context = this;
 
-        txt_nomee_hotel = (TextView) findViewById(R.id.txt_nomee_hotel);
-        txt_local_hotel = (TextView) findViewById(R.id.txt_local_hotel);
-        txt_preco_hotel = (TextView) findViewById(R.id.txt_preco_hotel);
+
         img_hotel = (ImageView) findViewById(R.id.img_hotel);
         img_logo = (ImageView) findViewById(R.id.img_logo);
         banner_promocao = (ViewPager) findViewById(R.id.banner_promocao);
@@ -169,22 +168,19 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Toast.makeText(context,"clicoou"+position,Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(context,QuartosActivity.class));
-
+                startActivity(new Intent(context,LugaresActivity.class));
             }
         });
-    }
-    public void verQuarto(View view){
-        startActivity(new Intent(this,QuartosActivity.class));
     }
     private void preencherAdapter() {
 
         // adicionando hoteis a lista
-        lstHotel.add(new Hotel("hotelLALALA", 299.00, "Sao sao sao", R.drawable.hotel));
-        lstHotel.add(new Hotel("hotelLULULU", 299.00, "Sao sao sao", R.drawable.quarto));
-        lstHotel.add(new Hotel("hotelLALALA", 299.00, "Sao sao sao", R.drawable.hotel));
+        lstHotel.add(new base("PRAIA", R.drawable.hotel));
+        lstHotel.add(new base("FRIO",  R.drawable.quarto));
+        lstHotel.add(new base("CAMPO",  R.drawable.hotel));
+        lstHotel.add(new base("FAZENDA",  R.drawable.hotel));
 
-        adapter = new HotelAdapter(this, R.layout.list_view_hotel, lstHotel);
+        adapter = new baseAdapter(this, R.layout.main, lstHotel);
         lst_main.setAdapter(adapter);
     }
 

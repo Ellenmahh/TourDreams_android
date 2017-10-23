@@ -14,10 +14,11 @@
         android:textSize="20dp"
         android:text="asdasdas"
         android:backgroundTint="@color/colorPrimaryDark" />
+
     <ImageView
         android:layout_width="fill_parent"
-        android:minWidth="50dp"
-        android:minHeight="40dp"
+        android:minWidth="40dp"
+        android:minHeight="35dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:id="@+id/img_contem_caracteristica"
@@ -26,14 +27,14 @@
         />
     <ImageView
         android:layout_width="fill_parent"
-        android:minWidth="50dp"
-        android:minHeight="50dp"
         android:layout_weight="1"
+        android:minWidth="40dp"
+        android:minHeight="30dp"
         android:layout_height="wrap_content"
         android:id="@+id/img_caracteristica"
-        android:paddingLeft="100dp"
         android:src="@drawable/ic_done_black_24dp"
         android:textAlignment="center"
         />
+
 
 </LinearLayout>

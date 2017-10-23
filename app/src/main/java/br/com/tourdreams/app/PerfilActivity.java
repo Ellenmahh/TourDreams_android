@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -34,7 +36,6 @@ public class PerfilActivity extends BaseActivity {
     FloatingActionButton msg_recente, msg_nova;
     List<Parceiro> lst_parceiro = new ArrayList<>();
     ListView list_msg;
-
     ParceiroAdapter adapter;
 
     @Override
@@ -51,7 +52,6 @@ public class PerfilActivity extends BaseActivity {
         linear_msg = (LinearLayout) findViewById(R.id.linear_msg);
         linear_status = (LinearLayout) findViewById(R.id.linear_status);
         linear_img = (LinearLayout) findViewById(R.id.linear_img);
-
         linear_msg.setVisibility(View.GONE);
         list_msg = (ListView) findViewById(R.id.list_msg);
 
@@ -104,14 +104,22 @@ public class PerfilActivity extends BaseActivity {
     }
 
     public void adquirir(View view) {
-        Toast.makeText(this,"aquirir",Toast.LENGTH_SHORT).show();
-        CustomBottomSheetDialog dialog = new CustomBottomSheetDialog(this);
-        dialog.show();
+        adquirir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Quanto mais você compra mais você ganha", Snackbar.LENGTH_LONG)
+                        .setAction("MTF", null).show();
+            }
+        });
     }
     public void oqMtf(View view) {
-        Toast.makeText(this,"mtf",Toast.LENGTH_SHORT).show();
-        CustomBottomSheetDialog dialog = new CustomBottomSheetDialog(this);
-        dialog.show();
+        oqMtf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "MILHAS TREVEL FIDELIDADE, quanto mais você compra mais você ganha", Snackbar.LENGTH_LONG)
+                        .setAction("MTF", null).show();
+            }
+        });
     }
 
     public void avaliacao(View view) {

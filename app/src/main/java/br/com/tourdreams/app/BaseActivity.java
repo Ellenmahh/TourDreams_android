@@ -72,8 +72,6 @@ public class BaseActivity  extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.home) {
             startActivity( new Intent(this,MainActivity.class));
-        }  else if (id == R.id.nossosParceiros) {
-            startActivity(new Intent(this,HoteleiroActivity.class));
         }  else if (id == R.id.faleConosco) {
             startActivity (new Intent(this,FaleConoscoActivity.class));
         } else if (id == R.id.sobre) {

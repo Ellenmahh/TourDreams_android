@@ -20,10 +20,12 @@ public class CustomBottomSheetDialog extends BottomSheetDialog{
     List<BuscaAvancada> lst_sheet;
     ListView lst_espandida;
     BuscaAvancadaAdapter adapter;
+
     private Context context;
     public CustomBottomSheetDialog (Context context ){
         super(context);
         this.context = context;
+
     }
      @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +60,6 @@ public class CustomBottomSheetDialog extends BottomSheetDialog{
         lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp,"WIFI"));
         lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp,"WIFI"));
         lst_sheet.add(new BuscaAvancada(R.drawable.ic_wifi_black_24dp,"WIFI"));
-
-
 
         adapter = new BuscaAvancadaAdapter(context,R.layout.modelo_sheet,lst_sheet);
         gv.setAdapter(adapter);

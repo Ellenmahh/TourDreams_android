@@ -42,7 +42,7 @@ public class Calendario extends DialogFragment
 
     @Override
     public void onDateSet(DatePicker view, int year, int month , int dayOfMonth) {
-        //função execultada apos a escolha da data
+        //função executada apos a escolha da data
         String dataSelecionada = String.format("%02d/%02d/%d", dayOfMonth, ++month, year);
         data.setText(dataSelecionada);
     }

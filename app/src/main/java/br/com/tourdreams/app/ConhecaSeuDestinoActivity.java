@@ -15,7 +15,7 @@ import java.util.List;
 public class ConhecaSeuDestinoActivity extends BaseActivity {
     ListView lst_destino;
     List<ConhecaSeuDestino> lstDestino = new ArrayList<>();
-  DestinosAdapter adapter;
+    DestinosAdapter adapter;
     TextView txtcomentario;
     Context context;
 

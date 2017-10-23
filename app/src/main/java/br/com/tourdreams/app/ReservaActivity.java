@@ -1,6 +1,7 @@
 package br.com.tourdreams.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
@@ -8,45 +9,59 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import br.com.bloder.magic.view.MagicButton;
+
 
 public class ReservaActivity extends AppCompatActivity {
-    TextView txt_nome_do_hotel,txt_nome_reserva,txt_preco_reserva,txt_caracteristicas, dt_check_in, dt_check_out;
+    TextView txt_nome_do_hotel,txt_nome_quarto,txt_preco_reserva,txt_caracteristicas, dt_check_in, dt_check_out,total_dias,total_valor;
     ImageView img_quarto,img_contem_caracteristica;
+    Button btn_reservar;
     ViewPager slide_quartos;
     Context context;
     ListView lst_caract;
     CaracteristicasAdapter adapter;
     List <Caracteristicas> lst_caracteristica = new ArrayList<>();
-
+    LinearLayout linear_reserva;
+    LinearLayout linear_reserva_finalizar;
     LinearLayout sliderDots;
     private int dotscount;
     private ImageView [] dots;
+    MagicButton conheca_seu_destino_magic,chat_magic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserva);
         context = this;
-        txt_nome_do_hotel = (TextView) findViewById(R.id.txt_nome_do_hotel);
-        txt_nome_reserva = (TextView) findViewById(R.id.txt_nome_reserva);
-        txt_preco_reserva = (TextView) findViewById(R.id.txt_preco_reserva);
-        txt_caracteristicas = (TextView) findViewById(R.id.txt_caracteristicas);
-        lst_caract = (ListView) findViewById(R.id.lst_caract);
-        dt_check_in =(TextView) findViewById(R.id.data);
-        dt_check_out =(TextView) findViewById(R.id.data2);
-        slide_quartos = (ViewPager) findViewById(R.id.slide_quartos);
-        sliderDots = (LinearLayout) findViewById(R.id.sliderDots);
-        img_contem_caracteristica = (ImageView) findViewById(R.id.img_contem_caracteristica);
+        findView();
+
+        conheca_seu_destino_magic.setMagicButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(context,ConhecaSeuDestinoActivity.class));
+            }
+        });
+
+        chat_magic.setMagicButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(context,Chat.class));
+            }
+        });
 
         lst_caracteristica.add(new Caracteristicas("Wifi",true,R.drawable.ic_wifi_black_24dp));
         lst_caracteristica.add(new Caracteristicas("Academia",true,R.drawable.ic_fitness_center_black_24dp));
@@ -96,6 +111,27 @@ public class ReservaActivity extends AppCompatActivity {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new MyTimeTask(), 2000, 4000);
     }
+
+    private void findView() {
+        txt_nome_do_hotel = (TextView) findViewById(R.id.txt_nome_do_hotel);
+        txt_nome_quarto = (TextView) findViewById(R.id.txt_nome_quarto);
+        txt_preco_reserva = (TextView) findViewById(R.id.txt_preco_reserva);
+        txt_caracteristicas = (TextView) findViewById(R.id.txt_caracteristicas);
+        lst_caract = (ListView) findViewById(R.id.lst_caract);
+        dt_check_in =(TextView) findViewById(R.id.data);
+        dt_check_out =(TextView) findViewById(R.id.data2);
+        total_dias =(TextView) findViewById(R.id.total_dias);
+        total_valor =(TextView) findViewById(R.id.total_valor);
+        slide_quartos = (ViewPager) findViewById(R.id.slide_quartos);
+        sliderDots = (LinearLayout) findViewById(R.id.sliderDots);
+        img_contem_caracteristica = (ImageView) findViewById(R.id.img_contem_caracteristica);
+        linear_reserva = (LinearLayout) findViewById(R.id.linear_reserva);
+        linear_reserva_finalizar = (LinearLayout) findViewById(R.id.linear_reserva_finalizar);
+        btn_reservar = (Button) findViewById(R.id.btn_reservar);
+        conheca_seu_destino_magic = (MagicButton) findViewById(R.id.conheca_seu_destino_magic);
+        chat_magic = (MagicButton) findViewById(R.id.chat_magic);
+    }
+
     public void checkIn(View view) {
         //Abrir o calendario
         DialogFragment calendario = new Calendario( dt_check_in );
@@ -106,6 +142,17 @@ public class ReservaActivity extends AppCompatActivity {
         //Abrir o calendario
         DialogFragment calendario = new Calendario( dt_check_out );
         calendario.show(getSupportFragmentManager(), "datepicker");
+    }
+    public void reservar(View view) {
+        linear_reserva.setVisibility(View.GONE);
+        linear_reserva_finalizar.setVisibility(View.VISIBLE);
+        btn_reservar.setText("FINALIZAR RESERVA");
+        btn_reservar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context,PerfilActivity.class));
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {return false;}

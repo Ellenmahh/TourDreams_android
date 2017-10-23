@@ -3,7 +3,9 @@
     package="br.com.tourdreams.app">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -38,10 +40,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".opActivity" />
         <activity
-            android:name=".QuartosActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".HoteleiroActivity"
+            android:name=".QuartoAllActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FaleConoscoActivity"
@@ -50,7 +49,6 @@
         <activity
             android:name=".SobreActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CheckOut" />
         <activity
             android:name=".PerfilActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -63,7 +61,10 @@
                 android:value="br.com.tourdreams.app.PerfilActivity" />
         </activity>
         <activity android:name=".PerfilParceiroActivity" />
-        <activity android:name=".ConhecaSeuDestinoActivity"></activity>
+        <activity android:name=".ConhecaSeuDestinoActivity" />
+        <activity
+            android:name=".LugaresActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -126,6 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnUpload"
+                android:onClick="abrirGaleria"
                 android:text="inserir imagem"/>
 
         </LinearLayout>
