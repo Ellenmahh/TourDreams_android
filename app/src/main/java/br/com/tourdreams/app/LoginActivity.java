@@ -1,9 +1,12 @@
 package br.com.tourdreams.app;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +17,12 @@ import com.google.gson.Gson;
 
 public class LoginActivity extends AppCompatActivity {
     EditText txt_email,txt_senha;
-    String email = "teste", senha = "teste";
+    String email , senha ;
     Button btnEntrar;
     public static Usuario user;
     Context context;
-    Integer idUsuario;
+    String json;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +39,16 @@ public class LoginActivity extends AppCompatActivity {
                 email = txt_email.getText().toString();
                 senha = txt_senha.getText().toString();
                 new logar().execute();
-
-
             }
         });
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
     private class logar extends AsyncTask<Void,Void,Void> {
         String retorno;
-        String server;
         Integer idUsuario;
 
-      /*  ProgressDialog progressDialog;
+       ProgressDialog progressDialog;
 
         private void showProgressDialog() {
             progressDialog = new ProgressDialog(context,R.style.CustomDialog);
@@ -59,12 +62,15 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            /*showProgressDialog();*/
+            showProgressDialog();
+        }
 
         @Override
         protected Void doInBackground(Void... params) {
 
-            retorno = HttpConnection.get(LoginActivity.this.getString(R.string.endServidor)+ "logar.php?email_usuario="+email+"&senha_usuario="+senha);
+            retorno = LoginActivity.this.getString(R.string.endServidor)
+                    +"logar.php?email="+email+"&senha="+senha;
+            json = HttpConnection.get(retorno);
 
             return null;
         }
@@ -80,12 +86,12 @@ public class LoginActivity extends AppCompatActivity {
 
             }else{
                 Gson gson = new Gson();
-                user = gson.fromJson(retorno, Usuario.class);
+                user = gson.fromJson(json, Usuario.class);
 
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
             }
-                /*progressDialog.dismiss();*/
+                progressDialog.dismiss();
 
         }
     }
