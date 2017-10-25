@@ -7,15 +7,8 @@ package br.com.tourdreams.app;
 public class DadosQuarto {
     private String nome;
     private double preco;
-    // private Caracteristicas[] caracteristicas ;
-    private String caracteristicas;
-    private  Integer imagens;
-    public DadosQuarto(String nome, double preco, String caracteristicas,  Integer imagens) {
-        this.nome = nome;
-        this.preco = preco;
-        this.caracteristicas = caracteristicas;
-        this.imagens = imagens;
-    }
+    private Caracteristicas[] caracteristicas ;
+    private String[] imagens;
 
     public String getNome() {
         return nome;
@@ -33,19 +26,19 @@ public class DadosQuarto {
         this.preco = preco;
     }
 
-    public String getCaracteristicas() {
+    public Caracteristicas[] getCaracteristicas() {
         return caracteristicas;
     }
 
-    public void setCaracteristicases(String caracteristicas) {
+    public void setCaracteristicases(Caracteristicas[] caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
 
-    public Integer getImagens() {
+    public String[] getImagens() {
         return imagens;
     }
 
-    public void setImagens(Integer imagens) {
+    public void setImagens(String[] imagens) {
         this.imagens = imagens;
     }
 }

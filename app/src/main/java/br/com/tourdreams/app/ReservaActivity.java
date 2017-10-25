@@ -2,6 +2,7 @@ package br.com.tourdreams.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
@@ -14,7 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,32 +65,66 @@ public class ReservaActivity extends AppCompatActivity {
             }
         });
 
-        lst_caracteristica.add(new Caracteristicas("Wifi",true,R.drawable.ic_wifi_black_24dp));
+      /* lst_caracteristica.add(new Caracteristicas("Wifi",true,R.drawable.ic_wifi_black_24dp));
         lst_caracteristica.add(new Caracteristicas("Academia",true,R.drawable.ic_fitness_center_black_24dp));
         lst_caracteristica.add(new Caracteristicas("Spa",true,R.drawable.ic_spa_black_24dp));
         adapter = new CaracteristicasAdapter(context,R.layout.listview,lst_caracteristica);
-        lst_caract.setAdapter(adapter);
+        lst_caract.setAdapter(adapter);*/
 
-        // imagens do slide
-        viewPagerAdapter viewPagerAdapter = new viewPagerAdapter(this);
-        slide_quartos.setAdapter(viewPagerAdapter);
+        new AsyncTask<Void,Void,Void>(){
 
-        // definindo os pontos de passagem do slide_promocao
-        dotscount = viewPagerAdapter.getCount();
-        dots = new ImageView[dotscount];
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
 
-        // definingo a imagem dos pontos do slide_promocao
-        for(int i = 0; i <dotscount; i++){
-            dots[i] = new ImageView(this);
-            dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.nonactive_dot));
+            String abrirReserva;
+            DadosQuarto dadosQuarto;
+            @Override
+            protected Void doInBackground(Void... voids) {
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(8,0,8,0);
-            sliderDots.addView(dots[i],params);
-        }
-        dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.active_dot));
+                //abrirQuarto = HttpConnection.get("http://10.107.134.16/20172sem/Andrey/TourDreams/Api/abrirQuarto.php");
+                //abrirQuarto = HttpConnection.get("http://localhost/Projetos/TourDreams/API/abrirQuarto.php");
+                abrirReserva = HttpConnection.get(ReservaActivity.this.getString(R.string.abrirReserva));
+                Gson gson = new Gson();
+                dadosQuarto = gson.fromJson(abrirReserva,DadosQuarto.class);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+
+                viewPagerAdapter viewPagerAdapter = new viewPagerAdapter(context,dadosQuarto.getImagens());
+                slide_quartos.setAdapter(viewPagerAdapter);
+
+                // definindo os pontos de passagem do slide_promocao
+                dotscount = viewPagerAdapter.getCount();
+                dots = new ImageView[dotscount];
+
+                // definingo a imagem dos pontos do slide_promocao
+                for(int i = 0; i <dotscount; i++){
+                    dots[i] = new ImageView(context);
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.nonactive_dot));
+
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(8,0,8,0);
+                    sliderDots.addView(dots[i],params);
+                }
+                dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.active_dot));
+
+                txt_nome_quarto.setText(dadosQuarto.getNome());
+                txt_preco_reserva.setText(dadosQuarto.getPreco()+"");
+
+                Caracteristicas[] car = dadosQuarto.getCaracteristicas();
+
+                adapter = new CaracteristicasAdapter(context,R.layout.listview,car);
+                lst_caract.setAdapter(adapter);
+
+            }
+        }.execute();
 
 
         slide_quartos.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

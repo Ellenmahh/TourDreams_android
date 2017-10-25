@@ -32,14 +32,15 @@ public class QuartoAllActivity extends BaseActivity {
         preco_modelo = (TextView) findViewById(R.id.preco_modelo);
         gridView = (GridView) findViewById(R.id.gridView);
 
-        lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
+     /*   lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
         lst_quarto.add(new DadosQuarto("quartohaha",299.99,"asd",R.drawable.hotel));
         lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
         lst_quarto.add(new DadosQuarto("quatal",199.90,"asd",R.drawable.hotel));
         lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
         lst_quarto.add(new DadosQuarto("quartohaha",299.99,"asd",R.drawable.hotel));
         lst_quarto.add(new DadosQuarto("quarto tal",399.99,"asd",R.drawable.quarto));
-        lst_quarto.add(new DadosQuarto("quatal",199.90,"asd",R.drawable.hotel));
+        lst_quarto.add(new DadosQuarto("quatal",199.90,"asd",R.drawable.hotel));*/
+
 
         adapter = new QuartoAdapter(context,R.layout.modelo,lst_quarto);
         gridView.setAdapter(adapter);

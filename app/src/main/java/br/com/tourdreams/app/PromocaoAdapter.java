@@ -15,17 +15,16 @@ import com.squareup.picasso.Picasso;
  * Created by Ellen on 27/09/2017.
  */
 
-public class viewPagerAdapter extends PagerAdapter {
+public class PromocaoAdapter extends PagerAdapter {
+
     private Context context;
     private LayoutInflater layoutInflater;
+    Promocao [] imagensStr;
 
-    private String [] imagensStr;
-
-    public viewPagerAdapter(Context context,String [] imagensStr) {
+    public PromocaoAdapter(Context context,Promocao [] imagensStr) {
         this.context = context;
         this.imagensStr = imagensStr;
     }
-
     @Override
     public int getCount() {
         return imagensStr.length;
@@ -33,10 +32,11 @@ public class viewPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+        return false;
     }
 
-    @Override
+
+   @Override
     public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -44,7 +44,7 @@ public class viewPagerAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.img_custom);
 
         //String imagem = "http://10.107.134.16/20172sem/Andrey/TourDreams/" +imagensStr[position];
-        String imagem = "http://10.107.134.26/inf4t/Andrey/TourDreams/" +imagensStr[position];
+        String imagem = "http://10.107.134.26/inf4t/Andrey/TourDreams/" + imagensStr[position];
         //  String imagem = "http://10.107.144.17/inf4t/TourDreams/" +imagensStr[position];
         //String imagem = "http://localhost/Projetos/TourDreams/API/"+imagensStr[position];
 
@@ -66,3 +66,4 @@ public class viewPagerAdapter extends PagerAdapter {
     }
 
 }
+

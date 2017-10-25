@@ -2,6 +2,7 @@ package br.com.tourdreams.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -15,8 +16,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +40,6 @@ public class MainActivity extends BaseActivity {
     ListView lst_main;
     List<base> lstHotel = new ArrayList<>();
     baseAdapter adapter;
-
-
     SearchView.OnQueryTextListener listennerBusca = new SearchView.OnQueryTextListener() {
 
         @Override
@@ -88,26 +88,48 @@ public class MainActivity extends BaseActivity {
         preencherAdapter();
         CliqueDaLista();
 
-        // imagens do slide
-         viewPagerAdapter viewPagerAdapter = new viewPagerAdapter(this);
-                banner_promocao.setAdapter(viewPagerAdapter);
+        new AsyncTask<Void,Void,Void>(){
+            Promocao[] imagens;
+            String promocao;
+            Integer id_promocao ;
+            @Override
+            protected Void doInBackground(Void... voids) {
 
-                        // definindo os pontos de passagem do slide_promocao
-                               dotscount = viewPagerAdapter.getCount();
+                //promocao = HttpConnection.get("http://localhost/Projetos/TourDreams/API/promocoes.php");
+                promocao = MainActivity.this.getString(R.string.promocao);
+                String json =  HttpConnection.get(promocao);
+                Gson gson = new Gson();
+                imagens = gson.fromJson(json, Promocao[].class);
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                // imagens do slide
+                PromocaoAdapter adapter = new PromocaoAdapter(context,imagens);
+                banner_promocao.setAdapter(adapter);
+
+                // definindo os pontos de passagem do slide_promocao
+                dotscount = adapter.getCount();
                 dots = new ImageView[dotscount];
 
-                        // definingo a imagem dos pontos do slide_promocao
-                                for(int i = 0; i <dotscount; i++){
-                        dots[i] = new ImageView(this);
-                        dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.nonactive_dot));
+                // definingo a imagem dos pontos do slide_promocao
+                for(int i = 0; i <dotscount; i++){
+                    dots[i] = new ImageView(context);
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.nonactive_dot));
 
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                       LinearLayout.LayoutParams.WRAP_CONTENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params.setMargins(8,0,8,0);
-                        sliderDots.addView(dots[i],params);
-                    }
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(8,0,8,0);
+                    sliderDots.addView(dots[i],params);
+                }
                 dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.active_dot));
+
+            }
+        }.execute();
 
         banner_promocao.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

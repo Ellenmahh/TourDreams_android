@@ -43,8 +43,10 @@ public class QuartoAdapter extends ArrayAdapter<DadosQuarto>{
 
             txt_modelo.setText(item.getNome());
             preco_modelo.setText(Double.toString(item.getPreco()));
+
+
             Picasso.with(getContext())
-                    .load(item.getImagens()) // pega a imagem e carrega ela na image view
+                    .load(String.valueOf(item.getImagens())) // pega a imagem e carrega ela na image view
                     .into(img_quarto_modelo); // a imgview q vai carregar a imagem
 
         }
