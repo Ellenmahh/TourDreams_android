@@ -43,7 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
     }
+
     private class logar extends AsyncTask<Void,Void,Void> {
         String retorno;
         Integer idUsuario;

@@ -6,7 +6,7 @@ package br.com.tourdreams.app;
 
 public class Promocao {
     private int id_promocao;
-    private int banner_promocao;
+    private String banner_promocao;
     private int status_promocao;
 
     public int getId_promocao() {
@@ -17,11 +17,11 @@ public class Promocao {
         this.id_promocao = id_promocao;
     }
 
-    public int getBanner_promocao() {
+    public String getBanner_promocao() {
         return banner_promocao;
     }
 
-    public void setBanner_promocao(int banner_promocao) {
+    public void setBanner_promocao(String banner_promocao) {
         this.banner_promocao = banner_promocao;
     }
 

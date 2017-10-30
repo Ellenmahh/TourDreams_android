@@ -65,71 +65,17 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         definirConteudo(R.layout.content_main);
         context = this;
-
-
         img_hotel = (ImageView) findViewById(R.id.img_hotel);
         img_logo = (ImageView) findViewById(R.id.img_logo);
         banner_promocao = (ViewPager) findViewById(R.id.banner_promocao);
         sliderDots = (LinearLayout) findViewById(R.id.sliderDots);
         lst_main = (ListView) findViewById(R.id.lst_main);
-/*
-        chat_usuario = (MagicButton) findViewById(R.id.chat_usuario);
-        chat_usuario.setMagicButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,"conversa",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent (context,Chat.class));
-            }
-        });*/
 
+        new promocao().execute();
         LayoutInflater inflate = LayoutInflater.from(context);
         inflate.inflate(R.layout.small_bar,null);
-
         preencherAdapter();
         CliqueDaLista();
-
-        new AsyncTask<Void,Void,Void>(){
-            Promocao[] imagens;
-            String promocao;
-            Integer id_promocao ;
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                //promocao = HttpConnection.get("http://localhost/Projetos/TourDreams/API/promocoes.php");
-                promocao = MainActivity.this.getString(R.string.promocao);
-                String json =  HttpConnection.get(promocao);
-                Gson gson = new Gson();
-                imagens = gson.fromJson(json, Promocao[].class);
-
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                // imagens do slide
-                PromocaoAdapter adapter = new PromocaoAdapter(context,imagens);
-                banner_promocao.setAdapter(adapter);
-
-                // definindo os pontos de passagem do slide_promocao
-                dotscount = adapter.getCount();
-                dots = new ImageView[dotscount];
-
-                // definingo a imagem dos pontos do slide_promocao
-                for(int i = 0; i <dotscount; i++){
-                    dots[i] = new ImageView(context);
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.nonactive_dot));
-
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
-                    params.setMargins(8,0,8,0);
-                    sliderDots.addView(dots[i],params);
-                }
-                dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.active_dot));
-
-            }
-        }.execute();
 
         banner_promocao.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -155,6 +101,65 @@ public class MainActivity extends BaseActivity {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new MyTimeTask(), 2000, 4000);
     }
+    private class promocao extends AsyncTask<Void,Void,Void>{
+        Promocao[] imagens;
+        String promocao;
+        Integer id_promocao ;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            //promocao = HttpConnection.get("http://localhost/Projetos/TourDreams/API/promocoes.php");
+            promocao = MainActivity.this.getString(R.string.promocao);
+            String json =  HttpConnection.get(promocao);
+            Gson gson = new Gson();
+            //JsonReader reader = new JsonReader(new StringReader(json));
+            //reader.setLenient(true);
+            imagens = gson.fromJson(json, Promocao[].class);
+            for(Promocao p : imagens ){
+                Log.d("promocao",p.getBanner_promocao()+"\n");
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            // imagens do slide
+            PromocaoAdapter adapter = new PromocaoAdapter(context,imagens);
+            banner_promocao.setAdapter(adapter);
+
+            // definindo os pontos de passagem do slide_promocao
+            dotscount = adapter.getCount();
+            dots = new ImageView[dotscount];
+
+            // definingo a imagem dos pontos do slide_promocao
+            for(int i = 0; i <dotscount; i++){
+                dots[i] = new ImageView(context);
+                dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.nonactive_dot));
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(8,0,8,0);
+                sliderDots.addView(dots[i],params);
+            }
+            dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.active_dot));
+
+        }
+    }
+    /*private class praia extends AsyncTask<Void,Void,Void>{
+        MelhoresDestinos[] melhoresDestinos_lst;
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String praia = MainActivity.this.getString(R.string.endServidor)+"home.php";
+            String jsonPraia = HttpConnection.get(praia);
+            Gson gson = new Gson();
+            melhoresDestinos_lst = gson.fromJson(jsonPraia,MelhoresDestinos[].class);
+            return null;
+        }
+
+    }*/
 
     public void btn_filtro_sheet(View view) {
         Toast.makeText(this,"bottom sheet",Toast.LENGTH_SHORT).show();

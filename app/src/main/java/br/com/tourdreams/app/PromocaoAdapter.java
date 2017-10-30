@@ -44,8 +44,8 @@ public class PromocaoAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.img_custom);
 
         //String imagem = "http://10.107.134.16/20172sem/Andrey/TourDreams/" +imagensStr[position];
-        String imagem = "http://10.107.134.26/inf4t/Andrey/TourDreams/" + imagensStr[position];
-        //  String imagem = "http://10.107.144.17/inf4t/TourDreams/" +imagensStr[position];
+       // String imagem = "http://10.107.134.26/inf4t/Andrey/TourDreams/" + imagensStr[position];
+          String imagem = "http://10.107.144.17/inf4t/TourDreams/" +imagensStr[position];
         //String imagem = "http://localhost/Projetos/TourDreams/API/"+imagensStr[position];
 
         Log.d("instantiateItem", imagem);

@@ -33,12 +33,12 @@
     </string>
     <string name="action_settings">Settings</string>
 
-    <!-- aula do marcel-->
+    <!-- aula do marcel
     <string name="abrirReserva">"http://10.107.134.26/inf4t/Andrey/TourDreams/API/abrirQuarto.php"</string>
     <string name="promocao">"http://10.107.134.26/inf4t/Andrey/TourDreams/API/promocoes.php"</string>
     <string name="abrirQuarto">"http://10.107.134.26/inf4t/Andrey/TourDreams/API/quarto.php"</string>
     <string name="imagem">"http://10.107.134.26/inf4t/Andrey/TourDreams/API/"</string>
-    <string name="endServidor">"http://10.107.134.26/inf4t/Andrey/TourDreams/API/"</string>
+    <string name="endServidor">"http://10.107.134.26/inf4t/Andrey/TourDreams/API/"</string>-->
 
     <!--aula do kassiano
     <string name="abrirReserva">"http://10.107.134.16/20172sem/Andrey/TourDreams/API/abrirQuarto.php"</string>
@@ -47,12 +47,12 @@
     <string name="imagem">"http://10.107.134.16/inf4t/20172sem/TourDreams/"</string>
     <string name="endServidor">""http://10.107.134.16/20172sem/Andrey/TourDreams/API/"</string>-->
 
-    <!-- segunda e quinta
+    <!-- segunda e quinta-->
     <string name="abrirReserva">"http://10.107.144.17/inf4t/TourDreams/API/abrirQuarto.php"</string>
     <string name="promocao">"http://10.107.144.17/inf4t/TourDreams/API/promocoes.php"</string>
     <string name="abrirQuarto">"http://10.107.144.17/inf4t/TourDreams/API/quarto.php"</string>
     <string name="imagem">"http://10.107.144.17/inf4t/TourDreams/"</string>
-    <string name="endServidor">"http://10.107.144.17/inf4t/TourDreams/API/"</string>-->
+    <string name="endServidor">"http://10.107.144.17/inf4t/TourDreams/API/"</string>
 
     <!-- aula do segunda
     <string name="abrirReserva">"http://10.107.144.17/inf4t/TourDreams/API/abrirQuarto.php"</string>
