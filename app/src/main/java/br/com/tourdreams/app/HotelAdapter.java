@@ -1,7 +1,6 @@
 package br.com.tourdreams.app;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +48,7 @@ public class HotelAdapter extends ArrayAdapter <Hotel> {
                 txt_nomee_do_hotel.setText(item.getNome());
                 txt_local_hotel.setText(item.getLocal());
                 txt_preco_hotel.setText(Double.toString(item.getPreco()));
+
                 Picasso.with(getContext())
                         .load(item.getImagem()) // pega a imagem e carrega ela na image view
                         .into(img_hotel); // a imgview q vai carregar a imagem

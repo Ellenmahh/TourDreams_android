@@ -40,6 +40,8 @@ public class MainActivity extends BaseActivity {
     ListView lst_main;
     List<base> lstHotel = new ArrayList<>();
     baseAdapter adapter;
+    MelhoresDestinosAdapter adapterMelhoresDestinos;
+    int  categoria = 0;
     SearchView.OnQueryTextListener listennerBusca = new SearchView.OnQueryTextListener() {
 
         @Override
@@ -148,18 +150,7 @@ public class MainActivity extends BaseActivity {
 
         }
     }
-    /*private class praia extends AsyncTask<Void,Void,Void>{
-        MelhoresDestinos[] melhoresDestinos_lst;
-        @Override
-        protected Void doInBackground(Void... voids) {
-            String praia = MainActivity.this.getString(R.string.endServidor)+"home.php";
-            String jsonPraia = HttpConnection.get(praia);
-            Gson gson = new Gson();
-            melhoresDestinos_lst = gson.fromJson(jsonPraia,MelhoresDestinos[].class);
-            return null;
-        }
 
-    }*/
 
     public void btn_filtro_sheet(View view) {
         Toast.makeText(this,"bottom sheet",Toast.LENGTH_SHORT).show();
@@ -194,11 +185,37 @@ public class MainActivity extends BaseActivity {
         lst_main.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(context,"clicoou"+position,Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(context,LugaresActivity.class));
+
+                switch (position){
+                    case 0:
+                        categoria = 1;
+                        break;
+                    case 1:
+                        categoria = 2;
+                        break;
+                    case 2:
+                        categoria = 3;
+                        break;
+                    case 3:
+                        categoria = 4;
+                        break;
+                }
+
+                Intent intent = new Intent(context,LugaresActivity.class);
+                intent.putExtra("idCategoria",categoria);
+                startActivity(intent);
+
+                //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                //int id_categoria = m.getId_hotel();
+                //preferences.edit().putInt("idCategoria",id_categoria).commit();
+
+                Toast.makeText(context,""+categoria,Toast.LENGTH_SHORT).show();
+               //startActivity(new Intent(context,LugaresActivity.class));
             }
         });
     }
+
+
     private void preencherAdapter() {
 
         // adicionando hoteis a lista

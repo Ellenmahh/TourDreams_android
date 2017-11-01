@@ -2,7 +2,7 @@ package br.com.tourdreams.app;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +24,11 @@ public class LugaresActivity extends BaseActivity {
     TextView txt_nomee_hotel, txt_preco_hotel, txt_local_hotel;
     ImageView img_hotel;
     ListView lst_lugares;
-    List<Hotel> lstLugares= new ArrayList<>();
+    List<Hotel> lstLugares = new ArrayList<>();
     HotelAdapter adapter;
     Context context;
+
+    int categoria;
     SearchView.OnQueryTextListener listennerBusca = new SearchView.OnQueryTextListener() {
 
         @Override
@@ -33,10 +37,11 @@ public class LugaresActivity extends BaseActivity {
             small.setVisibility(View.VISIBLE);
             return false;
         }
+
         @Override
         // é executado a cada letra clicada
         public boolean onQueryTextChange(String newText) {
-            Log.d("OnQueryTextListener",newText);
+            Log.d("OnQueryTextListener", newText);
             // filtragem do adapter
             adapter.getFilter().filter(newText);
             return false;
@@ -50,34 +55,50 @@ public class LugaresActivity extends BaseActivity {
         context = this;
 
         img_hotel = (ImageView) findViewById(R.id.img_hotel);
-        txt_nomee_hotel =(TextView) findViewById(R.id.txt_nomee_hotel);
+        txt_nomee_hotel = (TextView) findViewById(R.id.txt_nomee_hotel);
         txt_preco_hotel = (TextView) findViewById(R.id.txt_preco_hotel);
         txt_local_hotel = (TextView) findViewById(R.id.txt_local_hotel);
         lst_lugares = (ListView) findViewById(R.id.lst_lugares);
 
-        preencherAdapter();
+        //preencherAdapter();
+
+        new categoria().execute();
 
         lst_lugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(context,"clicoou"+position,Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(context,QuartoAllActivity.class));
+                Toast.makeText(context, "clicoou" + position, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(context, QuartoAllActivity.class));
             }
         });
     }
-    private void preencherAdapter() {
 
-        // adicionando hoteis a lista
 
-        lstLugares.add(new Hotel("hotel do joãozinho", 299.00, "São Paulo", R.drawable.hotel));
-        lstLugares.add(new Hotel("hotel do pedrinho", 299.00, "Goiânia", R.drawable.quarto));
-        lstLugares.add(new Hotel("hotel do zezinho", 299.00, "Rio de Janero", R.drawable.hotel));
-        lstLugares.add(new Hotel("hotel da LALALA", 299.00, "Rio de Janero", R.drawable.quarto));
-        lstLugares.add(new Hotel("hotel da lulu", 299.00, "Rio de Janero", R.drawable.hotel));
 
-        adapter = new HotelAdapter(this, R.layout.list_view_hotel, lstLugares);
-        lst_lugares.setAdapter(adapter);
+    private class categoria extends AsyncTask<Void,Void,Void> {
+        MelhoresDestinos[] melhoresDestinos_lst;
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Intent intent = getIntent();
+            categoria = getIntent().getExtras().getInt("idCategoria");
+
+            String praia = LugaresActivity.this.getString(R.string.endServidor)+"home.php?id_categoria="+categoria;
+            String jsonPraia = HttpConnection.get(praia);
+            Gson gson = new Gson();
+            melhoresDestinos_lst = gson.fromJson(jsonPraia,MelhoresDestinos[].class);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            MelhoresDestinosAdapter adapter = new MelhoresDestinosAdapter(LugaresActivity.this.context, R.layout.list_view_hotel, melhoresDestinos_lst);
+            lst_lugares.setAdapter(adapter);
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,4 +112,6 @@ public class LugaresActivity extends BaseActivity {
 
         return true;
     }
+
+
 }
